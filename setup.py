@@ -6,13 +6,13 @@ from setuptools import find_packages, setup
 
 setup(
     name='code_bleu',
-    version="1.0.1",
+    version="1.0.2",
     description='Calculating CodeBLEU, a metric for code similarity',
     maintainer='Linyuan Gong',
     maintainer_email='gonglinyuan@hotmail.com',
     url='https://github.com/gonglinyuan/code_bleu',
     packages=find_packages(),
-    package_data={'code_bleu': ['*.txt']},
+    package_data={'code_bleu': ['*.txt', '*/*.txt', '*/*/*.txt']},
     install_requires=['setuptools>=60.0.0', 'tree-sitter>=0.20.1', 'GitPython>=3.1'],
     license="MIT",
     classifiers=[
