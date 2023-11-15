@@ -1,11 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import os
-import subprocess
-
-from setuptools import Command, find_packages, setup
-
+from setuptools import find_packages, setup
 
 # class CustomBuildCommand(Command):
 #     """Custom command to run build.sh operations."""
@@ -61,7 +57,6 @@ setup(
     maintainer_email='gonglinyuan@hotmail.com',
     url='https://github.com/gonglinyuan/code_bleu',
     packages=find_packages(''),
-    package_dir={'': ''},
     package_data={'code_bleu': ['*.txt']},
     install_requires=['setuptools>=60.0.0', 'tree-sitter>=0.20.1'],
     license="MIT",
