@@ -6,7 +6,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='code_bleu',
-    version="1.0.0",
+    version="1.0.1",
     description='Calculating CodeBLEU, a metric for code similarity',
     maintainer='Linyuan Gong',
     maintainer_email='gonglinyuan@hotmail.com',
