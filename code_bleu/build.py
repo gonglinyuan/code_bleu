@@ -4,7 +4,7 @@ import tempfile
 import git
 from tree_sitter import Language
 
-LIBRARY_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'code_bleu', 'parser', 'my-languages.so')
+LIBRARY_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'parser', 'my-languages.so')
 
 
 def build():
