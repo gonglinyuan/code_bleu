@@ -63,7 +63,7 @@ setup(
     packages=find_packages(''),
     package_dir={'': ''},
     package_data={'code_bleu': ['*.txt']},
-    install_requires=['setuptools>=60.0.0; tree-sitter>=0.20.1'],
+    install_requires=['setuptools>=60.0.0', 'tree-sitter>=0.20.1'],
     license="MIT",
     classifiers=[
         'Development Status :: 5 - Production/Stable',
