@@ -6,9 +6,10 @@ import os
 from typing import List, Set
 
 import bleu
-import dataflow_match
-import syntax_match
-import weighted_ngram_match
+import code_bleu.build
+import code_bleu.dataflow_match
+import code_bleu.syntax_match
+import code_bleu.weighted_ngram_match
 
 
 def make_weights(reference_tokens: List[str], key_word_set: Set[str]):
@@ -19,6 +20,8 @@ def make_weights(reference_tokens: List[str], key_word_set: Set[str]):
 
 
 def calc_code_bleu(refs: List[str], hyp: str, lang: str, params=(0.25, 0.25, 0.25, 0.25)):
+    code_bleu.build.maybe_build()
+
     alpha, beta, gamma, theta = params
     assert abs(alpha + beta + gamma + theta - 1) < 1e-8
     refs = [ref.strip() for ref in refs]
@@ -35,11 +38,14 @@ def calc_code_bleu(refs: List[str], hyp: str, lang: str, params=(0.25, 0.25, 0.2
         [ref, make_weights(ref, keywords)]
         for ref in tokenized_refs
     ]
-    weighted_ngram_match_score = weighted_ngram_match.sentence_bleu(tokenized_refs_with_weights, tokenized_hyp)
+    weighted_ngram_match_score = code_bleu.weighted_ngram_match.sentence_bleu(
+        tokenized_refs_with_weights,
+        tokenized_hyp
+        )
 
-    syntax_match_score = syntax_match.corpus_syntax_match([refs], [hyp], lang)
+    syntax_match_score = code_bleu.syntax_match.corpus_syntax_match([refs], [hyp], lang)
 
-    dataflow_match_score = dataflow_match.corpus_dataflow_match([refs], [hyp], lang)
+    dataflow_match_score = code_bleu.dataflow_match.corpus_dataflow_match([refs], [hyp], lang)
 
     return (
         alpha * ngram_match_score
