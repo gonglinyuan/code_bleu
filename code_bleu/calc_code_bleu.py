@@ -5,7 +5,7 @@
 import os
 from typing import List, Set
 
-import bleu
+import code_bleu.bleu
 import code_bleu.build
 import code_bleu.dataflow_match
 import code_bleu.syntax_match
@@ -29,7 +29,7 @@ def calc_code_bleu(refs: List[str], hyp: str, lang: str, params=(0.25, 0.25, 0.2
 
     tokenized_refs = [ref.split() for ref in refs]
     tokenized_hyp = hyp.split()
-    ngram_match_score = bleu.sentence_bleu(tokenized_refs, tokenized_hyp)
+    ngram_match_score = code_bleu.bleu.sentence_bleu(tokenized_refs, tokenized_hyp)
 
     keywords_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'keywords', lang + ".txt")
     with open(keywords_file, "r", encoding="utf-8") as f:
